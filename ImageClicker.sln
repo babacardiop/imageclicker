@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28306.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageClicker", "ImageClicker\ImageClicker.csproj", "{B84025E8-978C-4D4E-9438-84B19A62CDBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageClicker", "ImageClicker\ImageClicker.csproj", "{B84025E8-978C-4D4E-9438-84B19A62CDBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{996B78ED-37D7-4477-B1B7-D2D2EFC11432}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996B78ED-37D7-4477-B1B7-D2D2EFC11432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996B78ED-37D7-4477-B1B7-D2D2EFC11432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996B78ED-37D7-4477-B1B7-D2D2EFC11432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996B78ED-37D7-4477-B1B7-D2D2EFC11432}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

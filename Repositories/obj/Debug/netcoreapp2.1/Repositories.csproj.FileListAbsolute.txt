@@ -1,0 +1,16 @@
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Repositories.deps.json
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Repositories.dll
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.AssemblyInfoInputs.cache
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.AssemblyInfo.cs
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.csprojAssemblyReference.cache
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Repositories.pdb
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.dll
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.pdb
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Repositories.runtimeconfig.json
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Repositories.runtimeconfig.dev.json
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\BabacarD\source\repos\ImageClicker\Repositories\obj\Debug\netcoreapp2.1\Repositories.csproj.CopyComplete
