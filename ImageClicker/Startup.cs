@@ -55,6 +55,10 @@ namespace ImageClicker
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            // Put as the first middleware in order to be able to 
+            //    break in any request and catch all unhandled exceptions.
+            //app.UseApiRequestExceptionHandler();
+
             app.UseSignalR(route =>
             {
                 route.MapHub<ImagesHub>("/imageshub");
@@ -79,6 +83,8 @@ namespace ImageClicker
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            //app.UseApiRequestExceptionHandler();
         }
     }
 }
