@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28306.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageClicker", "ImageClicker\ImageClicker.csproj", "{B84025E8-978C-4D4E-9438-84B19A62CDBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84025E8-978C-4D4E-9438-84B19A62CDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8917937-8331-4E3B-AF42-6DDE08803C41}
+	EndGlobalSection
+EndGlobal
