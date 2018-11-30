@@ -40,7 +40,7 @@ namespace ImageClicker.Controllers
 
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
-            if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+            if (!result.Succeeded) return new BadRequestObjectResult(result.Errors);
 
             await _appDbContext.Seeders.AddAsync(new ImageSeeder
                 {IdentityId = userIdentity.Id, Location = model.Location});

@@ -1,7 +1,10 @@
+using AutoMapper;
+using ImageClicker.Helpers;
 using ImageClicker.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +39,22 @@ namespace ImageClicker
                     b => b.MigrationsAssembly("Repositories")));
 
             services.AddSignalR();
+
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+                {
+                    options.User.RequireUniqueEmail = false;
+                })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+            // Auto Mapper Configurations
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,6 +102,8 @@ namespace ImageClicker
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            app.UseAuthentication();
 
             //app.UseApiRequestExceptionHandler();
         }
