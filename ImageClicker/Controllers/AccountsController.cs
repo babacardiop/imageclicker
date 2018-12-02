@@ -1,59 +1,84 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using AutoMapper;
+using ImageClicker.Auth;
 using ImageClicker.Helpers;
+using ImageClicker.Models;
 using ImageClicker.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Repositories.Entities;
 
 namespace ImageClicker.Controllers
 {
-    [Route("api/accounts")]
-    [ApiController]
-    public class AccountsController : ControllerBase
+    [Route("api/[controller]")]
+    public class AuthController : Controller
     {
-        private readonly ApplicationDbContext _appDbContext;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IMapper _mapper;
+        private readonly IJwtFactory _jwtFactory;
+        private readonly JsonSerializerSettings _serializerSettings;
+        private readonly JwtIssuerOptions _jwtOptions;
 
-        public AccountsController(UserManager<AppUser> userManager, IMapper mapper, ApplicationDbContext appDbContext)
+        public AuthController(UserManager<AppUser> userManager, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions)
         {
             _userManager = userManager;
-            _mapper = mapper;
-            _appDbContext = appDbContext;
+            _jwtFactory = jwtFactory;
+            _jwtOptions = jwtOptions.Value;
+
+            _serializerSettings = new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented
+            };
         }
 
-        // POST api/accounts
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] RegistrationViewModel model)
+        // POST api/auth/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Post([FromBody]CredentialsViewModel credentials)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var userIdentity = _mapper.Map<AppUser>(model);
+            var identity = await GetClaimsIdentity(credentials.UserName, credentials.Password);
+            if (identity == null)
+            {
+                return BadRequest(Errors.AddErrorToModelState("login_failure", "Invalid username or password.", ModelState));
+            }
 
-            var result = await _userManager.CreateAsync(userIdentity, model.Password);
+            // Serialize and return the response
+            var response = new
+            {
+                id = identity.Claims.Single(c => c.Type == "id").Value,
+                auth_token = await _jwtFactory.GenerateEncodedToken(credentials.UserName, identity),
+                expires_in = (int)_jwtOptions.ValidFor.TotalSeconds
+            };
 
-            if (!result.Succeeded) return new BadRequestObjectResult(result.Errors);
-
-            await _appDbContext.Seeders.AddAsync(new ImageSeeder
-                {IdentityId = userIdentity.Id, Location = model.Location});
-            await _appDbContext.SaveChangesAsync();
-
-            return new OkResult();
+            var json = JsonConvert.SerializeObject(response, _serializerSettings);
+            return new OkObjectResult(json);
         }
 
-
-        [HttpGet("", Name = "get_api_clauses")]
-        public IActionResult Get()
+        private async Task<ClaimsIdentity> GetClaimsIdentity(string userName, string password)
         {
-            return new JsonResult(true);
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
+            {
+                // get the user to verifty
+                var userToVerify = await _userManager.FindByNameAsync(userName);
+
+                if (userToVerify != null)
+                {
+                    // check the credentials  
+                    if (await _userManager.CheckPasswordAsync(userToVerify, password))
+                    {
+                        return await Task.FromResult(_jwtFactory.GenerateClaimsIdentity(userName, userToVerify.Id));
+                    }
+                }
+            }
+
+            // Credentials are invalid, or account doesn't exist
+            return await Task.FromResult<ClaimsIdentity>(null);
         }
     }
 }

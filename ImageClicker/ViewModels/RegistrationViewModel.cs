@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FluentValidation.Attributes;
+using ImageClicker.ViewModels.Validators;
 
 namespace ImageClicker.ViewModels
 {
+    [Validator(typeof(RegistrationViewModelValidator))]
     public class RegistrationViewModel
     {
         public string Email { get; set; }

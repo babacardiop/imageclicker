@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ImageClicker.Middleware;
+﻿using ImageClicker.Middleware;
 using Microsoft.AspNetCore.Builder;
 
-namespace ImageClicker
+namespace ImageClicker.Extensions
 {
 
     /// <summary>

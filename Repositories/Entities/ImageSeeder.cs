@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Repositories.Entities
+﻿namespace Repositories.Entities
 {
     public class ImageSeeder
     {
